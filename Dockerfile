@@ -22,7 +22,7 @@ COPY poetry.lock /code/
 COPY docker-entrypoint.sh /code/
 COPY server.py /code/
 COPY gunicorn-conf.py /code/
-COPY migrate_db.py
+COPY migrate_db.py /code/
 
 COPY beauty_admin/ ./beauty_admin
 COPY beauty_models/ ./beauty_models
