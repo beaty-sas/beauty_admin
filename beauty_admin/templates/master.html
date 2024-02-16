@@ -1,0 +1,19 @@
+{% extends 'admin/base.html' %}
+{% block head_css %}
+    {{ super() }}
+    <style>
+    .container {
+        width: 100%;
+    }
+    .icon-minus-sign {
+        color: #b82e2e;
+    }
+    .icon-ok-circle {
+        color: #29c477;
+    }
+
+    </style>
+{% endblock %}
+{% block head_meta %}
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+{% endblock %}
