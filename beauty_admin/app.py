@@ -8,6 +8,8 @@ from beauty_admin import __version__
 from beauty_admin.api.base import bp
 from beauty_admin.conf.db import db
 from beauty_admin.conf.settings import settings
+from beauty_admin.views.business import BusinessView
+from beauty_admin.views.location import LocationView
 from beauty_models.beauty_models.models import Attachment
 from beauty_models.beauty_models.models import Booking
 from beauty_models.beauty_models.models import Business
@@ -25,8 +27,8 @@ def index():
 def _init_views(admin: 'Admin') -> None:
     admin.add_view(ModelView(Attachment, session=db.session))
     admin.add_view(ModelView(Booking, session=db.session))
-    admin.add_view(ModelView(Business, session=db.session))
-    admin.add_view(ModelView(Location, session=db.session))
+    admin.add_view(BusinessView(Business, session=db.session))
+    admin.add_view(LocationView(Location, session=db.session))
     admin.add_view(ModelView(Merchant, session=db.session))
     admin.add_view(ModelView(Offer, session=db.session))
     admin.add_view(ModelView(User, session=db.session))
@@ -37,8 +39,9 @@ def create_app():
     app = Flask(__name__)
 
     app.config['DEBUG'] = settings.DEBUG
-    app.config['SECRET_KEY'] = settings.SECRET_KEY
+    app.config['FLASK_ADMIN_SWATCH'] = 'cerulean'
     app.config['FLASK_ADMIN_FLUID_LAYOUT'] = True
+    app.config['SECRET_KEY'] = settings.SECRET_KEY
     app.config['SQLALCHEMY_DATABASE_URI'] = settings.sqlalchemy_database_uri
 
     admin = Admin(
@@ -51,6 +54,5 @@ def create_app():
     db.init_app(app)
     app.register_blueprint(bp)
     app.route('/')(index)
-    app.config['FLASK_ADMIN_SWATCH'] = 'cosmo'
     _init_views(admin)
     return app

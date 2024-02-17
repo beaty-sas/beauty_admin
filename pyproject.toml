@@ -17,6 +17,7 @@ flask-admin = "^1.6.1"
 flask-sqlalchemy = "^3.1.1"
 uvicorn = "^0.27.1"
 psycopg2-binary = "^2.9.9"
+shapely = "^2.0.3"
 
 
 [build-system]
