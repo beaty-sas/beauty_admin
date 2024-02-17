@@ -28,13 +28,13 @@ jobs:
       uses: aws-actions/amazon-ecr-login@v2
       
     - name: Build Docker image
-      run: docker build -t backend .
+      run: docker build -t admin .
       
     - name: Tag Docker image
-      run: docker tag backend ${{ secrets.AWS_BACKEND_REGISTRY }}:latest
+      run: docker tag admin ${{ secrets.AWS_ADMIN_REGISTRY }}:latest
       
     - name: Push Docker image to Amazon ECR
-      run: docker push ${{ secrets.AWS_BACKEND_REGISTRY }}:latest
+      run: docker push ${{ secrets.AWS_ADMIN_REGISTRY }}:latest
 
 #  update-service:
 #    needs: build-and-push

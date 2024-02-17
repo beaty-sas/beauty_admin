@@ -1,10 +1,10 @@
-FROM python:3.10-slim-bullseye as base
+FROM python:3.11-slim-bullseye as base
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     PIP_NO_CACHE_DIR=off \
     PIP_DISABLE_PIP_VERSION_CHECK=on \
     PIP_DEFAULT_TIMEOUT=100 \
-    POETRY_VERSION=1.7.1 \
+    POETRY_VERSION=1.4.0 \
     POETRY_NO_INTERACTION=1 \
     DEBIAN_FRONTEND=noninteractive \
     COLUMNS=80
@@ -22,6 +22,7 @@ COPY poetry.lock /code/
 COPY docker-entrypoint.sh /code/
 COPY server.py /code/
 COPY gunicorn-conf.py /code/
+COPY migrate_db.py /code/
 
 COPY beauty_admin/ ./beauty_admin
 COPY beauty_models/ ./beauty_models

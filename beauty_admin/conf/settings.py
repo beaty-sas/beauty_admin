@@ -20,7 +20,7 @@ class Env(str, Enum):
 class Settings(BaseSettings):
     DEBUG: bool = False
     ENV: Env = Env.LOCAL
-    PORT: int = 4000
+    PORT: int = 4001
     LOG_LEVEL: LogLevel = LogLevel.INFO
     ALLOWED_ORIGINS: str = 'http://localhost http://localhost:5173 http://127.0.0.1:3000'
     SECRET_KEY: str = 'secret'
