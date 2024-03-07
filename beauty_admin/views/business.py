@@ -7,7 +7,7 @@ class BusinessView(BaseModelView):
     form_columns = ('name', 'display_name', 'phone_number', 'location', 'owner', 'logo')
     inline_models = (
         (WorkingHours, dict(
-            form_columns=('id', 'date', 'opening_time', 'closing_time'),
+            form_columns=('id', 'date_from', 'date_to'),
         )),
         (Offer, dict(
             form_columns=('id', 'name', 'price', 'duration'),
