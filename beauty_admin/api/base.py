@@ -2,7 +2,7 @@ from flask import Blueprint
 
 from beauty_admin.conf.db import db
 
-bp = Blueprint('/', __name__)
+bp = Blueprint('/admin', __name__)
 
 
 @bp.route('/health')
